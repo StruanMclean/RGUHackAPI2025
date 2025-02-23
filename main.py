@@ -9,14 +9,10 @@ from io import BytesIO
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:3000"
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
     allow_credentials=True,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"], 
 )
@@ -35,8 +31,8 @@ async def root():
 @app.post("/predict")
 def read_root(item: Predict):
     print("hello")
-    # Load image from the URL
-    print(item.image_url)
+    print("Received a POST request")
+    print(f"Image URL: {item.image_url}")
     try:
         response = requests.get(item.image_url)
         image = Image.open(BytesIO(response.content))

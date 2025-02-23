@@ -6,3 +6,5 @@ pydantic
 fastapi[standard]
 requests
 transformers
+uvicorn
+gunicorn
