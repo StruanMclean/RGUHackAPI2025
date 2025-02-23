@@ -28,9 +28,9 @@ model = AutoModelForImageClassification.from_pretrained("chriamue/bird-species-c
 class Predict(BaseModel):
     image_url: str
 
-@app.post("/")
-def home():
-    return {"hello", "world"}
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 @app.post("/predict")
 def read_root(item: Predict):
